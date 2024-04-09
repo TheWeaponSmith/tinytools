@@ -1,3 +1,5 @@
+// Use: msgbox.exe 0/1/2(message type) "Caption" "Message"
+
 #include <stdio.h>
 #include <windows.h>
 
@@ -11,8 +13,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   int icon = MB_ICONINFORMATION;
 
   // Parse command line
-  int argsParsed =
-      sscanf(lpCmdLine, "%d %255s %255[^\n]", &intParam1, label, message);
+  int argsParsed = sscanf(lpCmdLine, "%d \"%255[^\"]\" \"%255[^\"]\"",
+                          &intParam1, label, message);
   if (argsParsed < 3) {
     return 1;
   }
